@@ -1,13 +1,13 @@
-import { init } from "@sentry/browser/dist/sdk.js";
-import { captureException } from "@sentry/minimal";
+import { init as sentryInit } from "@sentry/browser/dist/sdk";
+import { captureException as sentryCaptureException } from "@sentry/minimal";
 
 export function init(dsn) {
-  init({
+  sentryInit({
     dsn: dsn
   });
 }
 
 /* TODO: Create proper bindings */
 export function captureException(str) {
-  captureException(new Error(str));
+  sentryCaptureException(new Error(str));
 }
