@@ -1,12 +1,12 @@
-import * as Sentry from "@sentry/browser";
+import { init as sentryInit, captureException as sentryCaptureException } from "@sentry/browser";
 
 export function init(dsn) {
-  Sentry.init({
+  sentryInit({
     dsn: dsn
   });
 }
 
 /* TODO: Create proper bindings */
 export function captureException(str) {
-  Sentry.captureException(new Error(str));
+  sentryCaptureException(new Error(str));
 }
